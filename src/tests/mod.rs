@@ -1,10 +1,10 @@
 extern crate test;
 use SegmentTree;
-use ops::{add_ops, max_ops, min_ops};
+use ops::{AddOps, MaxOps, MinOps};
 
 #[test]
 fn add_ops(){
-    let mut tree: SegmentTree<i32,  add_ops<i32>> = SegmentTree::new(0, 1024);
+    let mut tree: SegmentTree<i32,  AddOps<i32>> = SegmentTree::new(0, 1024);
     tree.set_value(5, 1); // a[5] = 1;
     tree.set_value(6, 1); // a[6] = 1;
 
@@ -21,7 +21,7 @@ fn add_ops(){
 
 #[test]
 fn max_ops(){
-    let mut tree: SegmentTree<i32,  max_ops<i32>> = SegmentTree::new(0, 1024);
+    let mut tree: SegmentTree<i32,  MaxOps<i32>> = SegmentTree::new(0, 1024);
     tree.set_value(5, 1); // a[5] = 1;
     tree.set_value(6, 1); // a[6] = 1;
 
@@ -41,7 +41,7 @@ fn max_ops(){
 
 #[test]
 fn min_ops(){
-    let mut tree: SegmentTree<i32,  min_ops<i32>> = SegmentTree::new(0, 1024);
+    let mut tree: SegmentTree<i32,  MinOps<i32>> = SegmentTree::new(0, 1024);
     tree.set_value(5, 1); // a[5] = 1;
     tree.set_value(6, 2); // a[6] = 2;
 

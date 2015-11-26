@@ -1,9 +1,12 @@
 [package]
 
 name = "segmenttree"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["jaeju kim <jjkim@arcs.skku.edu>"]
 
 description = "interval update and query in O(lg n) time"
 repository = "https://github.com/azurespace/segment-tree"
 
+
+[dependencies]
+num = "0.1.*"

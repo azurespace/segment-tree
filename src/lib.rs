@@ -1,7 +1,8 @@
 #![crate_type = "lib"]
 #![cfg_attr(test, feature(test))]
-
-use std::num::Int;
+extern crate num;
+use num::integer::Integer;
+use num::traits::Bounded;
 use std::marker::{PhantomData,  Sized}; 
 use node::SegmentTreeNode;
 use ops::SegmentTreeOps;
@@ -11,12 +12,12 @@ mod tests;
 mod node;
 mod ops;
  
-pub struct SegmentTree<T: Sized+Copy, F: Sized>{
+pub struct SegmentTree<T: Integer+Copy+Bounded, F: Sized>{
     root: SegmentTreeNode<T>,
     f: PhantomData<F>
 }
  
-impl<T: Int, F: SegmentTreeOps<T>> SegmentTree<T, F>
+impl<T: Integer+Copy+Bounded, F: SegmentTreeOps<T>> SegmentTree<T, F>
 {
     pub fn new(lower_bound: i32, upper_bound: i32) -> SegmentTree<T, F> 
     {
@@ -48,7 +49,7 @@ impl<T: Int, F: SegmentTreeOps<T>> SegmentTree<T, F>
         v[0].value.get()
     }
  
-    pub fn set_value(&self, pos: i32, new_value: T) {
+    pub fn set_value(&mut self, pos: i32, new_value: T) {
         let mut v: Vec<&SegmentTreeNode<T>> = Vec::new();
         self.root.find_pos(pos, &mut v);
  

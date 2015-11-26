@@ -1,5 +1,7 @@
+extern crate num;
+
 use std::cell::Cell;
-use std::num::Int;
+use num::integer::Integer;
 
 pub struct SegmentTreeNode<T:Copy>
 {
@@ -9,7 +11,7 @@ pub struct SegmentTreeNode<T:Copy>
     pub children: Option<(Box<SegmentTreeNode<T>>, Box<SegmentTreeNode<T>>)>
 }
  
-impl<T:Int> SegmentTreeNode<T>{
+impl<T:Integer+Copy> SegmentTreeNode<T>{
     pub fn new(
         lower_bound:i32,
         upper_bound:i32) -> SegmentTreeNode<T>
